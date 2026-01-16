@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda_robotiq">
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model.xacro"/>
+  <xacro:include filename="$(find franka_description)/robots/panda/panda.urdf.xacro"/>
+
+  <xacro:macro name="cylinder_link">
+    <link name="cylinder_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.2" />
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.002" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05" />
+        </geometry>
+        <material name="yellow">
+          <color rgba="1.0 1.0 0.0 1.0" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05" />
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+  
+  <xacro:macro name="base_to_cylinder_joint">
+    <joint name="base_to_cylinder_joint" type="fixed">
+      <origin xyz="0 0 0.026" rpy="0 0 0"/>
+      <parent link="cylinder_link"/>
+      <child link="robotiq_arg2f_base_link"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- connect the robotiq gripper to the panda arm -->
+  <joint name="panda_robotiq_attachment_joint" type="fixed">
+    <origin xyz="0 0 0.025" rpy="0 0 -0.7853"/>
+    <parent link="panda_link8"/>
+    <child link="cylinder_link"/>
+  </joint>
+
+  <!-- add the robotiq gripper description -->
+
+
+  <xacro:cylinder_link/>
+  <xacro:base_to_cylinder_joint/>
+
+</robot>

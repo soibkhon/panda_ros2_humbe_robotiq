@@ -1,0 +1,65 @@
+# ROS2 Build and Install Directories
+build/
+install/
+log/
+*.egg-info/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg
+
+# C++
+*.o
+*.lo
+*.so
+*.so.*
+*.dylib
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
+CTestTestfile.cmake
+
+# Catkin/Colcon
+devel/
+.catkin_workspace
+.colcon
+
+# Backup files
+*~
+*.bak
+*.backup
+
+# Zip archives
+*.zip
+*.tar.gz
+*.tgz
+
+# SSH keys and credentials
+*.pem
+*.key
+sshkey
+sshkey.pub
